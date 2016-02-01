@@ -30,14 +30,15 @@ public class lineReverse
 		try
 		{
 			inputFile = new File(inFile);
-			outputFile = new File("out.txt");
+			outputFile = new File("smout.txt");
 			read = new BufferedReader(new FileReader(inputFile));
-			write = new PrintWriter(new FileWriter(outputFile));
+			write = new PrintWriter(outputFile);
 
 			//Skip first line
 			read.readLine();
 			while((line = read.readLine()) != null)
 			{
+				System.out.println("Checking file");
 				k++;
 				write.print("Case #" + k+ ": ");
 				write.println(this.reverseLine(line));
@@ -57,11 +58,12 @@ public class lineReverse
 
 		for (String word : elements)
 		{
-			System.out.println("Pushing " + word);
 			lineStack.push(word + " ");
 		}
 
-		for(int k = 0; k < lineStack.size(); k++)
+		int stackSize = lineStack.size();
+
+		for(int k = 0; k < stackSize; k++)
 		{
 			reversed += lineStack.pop();
 		}
